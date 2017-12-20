@@ -235,7 +235,7 @@ public class Player {
 	public void addHouseOrHotel(ArrayList<Land> board) {
 		System.out.println("addHouseOrHotel.exe");
 		//est ce que t as une full collection?
-		
+		//
 		//si oui, laquelle ?
 				
 		//sinon, get rekt.
