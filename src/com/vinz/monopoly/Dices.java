@@ -3,8 +3,8 @@ package com.vinz.monopoly;
 import java.util.Random;
 
 public class Dices {
-	private static int dice1 = 0;
-	private static int dice2 = 0;
+	public static int dice1 = 0;
+	public static int dice2 = 0;
 	private static int totalDices;
 
 	public static int getTotalDices() {
@@ -36,6 +36,7 @@ public class Dices {
 		dice1 = (int) (Math.random() * 6) + 1;
 		dice2 = (int) (Math.random() * 6) + 1;
 		totalDices = dice1 + dice2;
+		System.out.println("\n" + getDice1() + " + " + getDice2());
 	}
 
 	public static String displayTotalDices() {

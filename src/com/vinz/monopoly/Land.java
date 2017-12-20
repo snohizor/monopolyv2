@@ -7,20 +7,30 @@ public class Land {
 	private int position;
 	private int group;
 	private int price;
-	private int owner;
+	private Player owner;
 	private int rent;
+	private int allRents[];
 
-	public Land(int position, int group, int owner, int price, int rent, String name) {
-		super();
+	public Land(int position, int group, Player owner, int price, int rent, int[] allRents, String name) {
 		this.name = name;
 		this.group = group;
 		this.price = price;
 		this.position = position;
 		this.owner = owner;
 		this.rent = rent;
+		this.allRents = allRents;
 	}
-	
-	
+
+	// RENT TABLES
+
+
+	public int[] getAllRents() {
+		return allRents;
+	}
+
+	public void setAllRents(int[] allRents) {
+		this.allRents = allRents;
+	}
 
 	public int getRent() {
 		return rent;
@@ -38,11 +48,11 @@ public class Land {
 		this.price = price;
 	}
 
-	public int getOwner() {
+	public Player getOwner() {
 		return owner;
 	}
 
-	public void setOwner(int owner) {
+	public void setOwner(Player owner) {
 		this.owner = owner;
 	}
 
@@ -69,8 +79,8 @@ public class Land {
 	public void setPosition(int position) {
 		this.position = position;
 	}
-	
-	//Prix réel du loyer
+
+	// Prix réel du loyer
 	public static int creditsToPay(Land land) {
 		return land.getRent();
 	}
@@ -78,4 +88,5 @@ public class Land {
 	public static Land findFromBoardPosition(ArrayList<Land> board, int position) {
 		return board.stream().filter(land -> land.getPosition() == position).findFirst().orElse(null);
 	}
+
 }
