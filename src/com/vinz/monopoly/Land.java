@@ -8,21 +8,20 @@ public class Land {
 	private int group;
 	private int price;
 	private Player owner;
-	private int rent;
+	private int nbrHouses;
 	private int allRents[];
 
-	public Land(int position, int group, Player owner, int price, int rent, int[] allRents, String name) {
+	public Land(int position, int group, Player owner, int price, int nbrHouses, int[] allRents, String name) {
 		this.name = name;
 		this.group = group;
 		this.price = price;
 		this.position = position;
 		this.owner = owner;
-		this.rent = rent;
+		this.nbrHouses = nbrHouses;
 		this.allRents = allRents;
 	}
 
 	// RENT TABLES
-
 
 	public int[] getAllRents() {
 		return allRents;
@@ -32,12 +31,12 @@ public class Land {
 		this.allRents = allRents;
 	}
 
-	public int getRent() {
-		return rent;
+	public int getNbrHouses() {
+		return nbrHouses;
 	}
 
-	public void setRent(int rent) {
-		this.rent = rent;
+	public void setNbrHouses(int nbrHouses) {
+		this.nbrHouses = nbrHouses;
 	}
 
 	public int getPrice() {
@@ -81,8 +80,33 @@ public class Land {
 	}
 
 	// Prix réel du loyer
-	public static int creditsToPay(Land land) {
-		return land.getRent();
+	// A modifier ?
+	public int creditsToPay(Land land) {
+		int realRent = 1337;
+
+		switch (land.getNbrHouses()) {
+		case 0:
+			realRent = land.allRents[0];
+			break;
+		case 1:
+			realRent = land.allRents[1];
+			break;
+		case 2:
+			realRent = land.allRents[2];
+			break;
+		case 3:
+			realRent = land.allRents[3];
+			break;
+		case 4:
+			realRent = land.allRents[4];
+			break;
+		case 5:
+			realRent = land.allRents[5];
+			break;
+			default:
+			realRent = 420;
+		}
+		return realRent;
 	}
 
 	public static Land findFromBoardPosition(ArrayList<Land> board, int position) {

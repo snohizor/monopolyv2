@@ -58,8 +58,7 @@ public class Player {
 	public void setOwnedLands(int ownedLands) {
 		this.ownedLands = ownedLands;
 	}
-	
-	
+
 	// ******************************************
 	// ******************ACTION******************
 	// ******************************************
@@ -115,8 +114,7 @@ public class Player {
 			this.position = this.position - 40;
 			System.out.println("Homerun ! Vous recevez 20000 $ !");
 			this.setCredit(this.getCredit() + 20000);
-		}
-		else if(this.getPosition() == 40) {
+		} else if (this.getPosition() == 40) {
 			System.out.println("Case départ ! Vous recevez 40000 $ !!!");
 			this.setCredit(this.getCredit() + 40000);
 		}
@@ -167,7 +165,6 @@ public class Player {
 
 			// Si land.owner =! 0 && =! player.id, alors payer.exe;
 			else if (land.getOwner() != null && !land.getOwner().equals(this)) {
-				System.out.println("Le propriétaire de ce terrain est " + land.getOwner().getName());
 				this.payToPlayer(land);
 			}
 
@@ -229,26 +226,59 @@ public class Player {
 		if (choice == 4) {
 			this.unmortgage(board);
 		}
-		
+
 	}
 
 	public void addHouseOrHotel(ArrayList<Land> board) {
 		System.out.println("addHouseOrHotel.exe");
-		//est ce que t as une full collection?
-		//
-		//si oui, laquelle ?
-				
-		//sinon, get rekt.
+		// est ce que t as une full collection?
+		this.doesOwnFullGroup(board);
+		// si oui, laquelle ?
+
+		// sinon, get rekt.
 	}
-	
+
 	public void removeHouseOrHotel(ArrayList<Land> board) {
 		System.out.println("removeHouseOrHotel.exe");
 	}
-	
+
+	public void doesOwnFullGroup(ArrayList<Land> board) {
+		//dsl pour les hypotheques vincent.
+		int notOwnedLands = 0;
+		for (Land land : board) {
+			int groupSize = 0;
+			if (land.getOwner() == this) {
+				for (Land tempLand : board) {
+					if (tempLand.getGroup() == land.getGroup()) {
+						groupSize++;
+					}
+				}
+				int ownedGroupSize = 0;
+				for (Land temp2Land : board) {
+					if (temp2Land.getOwner() == this && temp2Land.getGroup() == land.getGroup()) {
+						ownedGroupSize++;
+						if (ownedGroupSize == groupSize) {
+							System.out.println(land.getName());
+						}
+					}
+				}
+			}
+			//pas proprio de la carte
+			else {
+				notOwnedLands++;
+				System.out.println(notOwnedLands);
+				if (notOwnedLands == 14) {
+					System.out.println("tu es sdf frr");
+				}
+			}
+		}
+		
+	}
+
 	public void mortgage(ArrayList<Land> board) {
 		System.out.println("mortgage.exe");
 	}
-	
+
 	public void unmortgage(ArrayList<Land> board) {
 		System.out.println("unmortgage.exe");
 	}
@@ -257,21 +287,23 @@ public class Player {
 		System.out.println("Voici les détails de " + land.getName());
 		System.out.println("Prix : " + land.getPrice());
 		System.out.println("Loyer nu : " + land.getAllRents());
-		//System.out.println("Loyer 1 maison : " + land.getAllRents());
+		// System.out.println("Loyer 1 maison : " + land.getAllRents());
 	}
 
 	// ******************************************
 	// ******************PAYING******************
 	// ******************************************
-
+	
 	public void payToPlayer(Land land) {
+		System.out.println(this.getName() + " est tombé chez " + land.getOwner().getName());
+		
 		this.setCredit(this.getCredit() - land.creditsToPay(land));
 		land.getOwner().setCredit(land.getOwner().getCredit() + land.creditsToPay(land));
 
 		// Texte
 		// System.out.println(this.getName() + " est tombé chez " +
 		// (land.getOwner()).getName() + "...");
-		System.out.println("Le loyer est de " + land.getRent() + ".");
+		System.out.println("Le loyer est de " + land.creditsToPay(land) + ".");
 		System.out.println(this.getName() + "'s credits = " + this.getCredit() + " $.\n");
 		// System.out.println(land.getOwner() + "'s credits = " +
 		// (land.getOwner()).getCredit() + " $.\n");
