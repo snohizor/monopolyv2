@@ -22,7 +22,7 @@ public class Main {
 		
 		ArrayList<Player> players = new ArrayList<Player>();
 
-		Player player1 = new Player("Kévin", 1, 150000, 0);
+		Player player1 = new Player("KÃ©vin", 1, 150000, 0);
 		Player player2 = new Player("Hugo", 2, 150000, 0);
 		
 		players.add(player1);
