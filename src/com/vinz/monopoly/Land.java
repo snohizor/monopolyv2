@@ -1,116 +1,74 @@
 package com.vinz.monopoly;
 
-import java.util.ArrayList;
+public class Land extends Case implements ICase {
 
-public class Land {
-	private String name;
-	private int position;
-	private int group;
-	private int price;
-	private Player owner;
-	private int nbrHouses;
-	private int allRents[];
+	private Group group;
 
-	public Land(int position, int group, Player owner, int price, int nbrHouses, int[] allRents, String name) {
-		this.name = name;
+	public int price;
+	public int[] rents;
+	public int houses;
+
+	public Land(String name, Group group, int price, int[] rents) {
+
+		super(name);
+
 		this.group = group;
 		this.price = price;
-		this.position = position;
-		this.owner = owner;
-		this.nbrHouses = nbrHouses;
-		this.allRents = allRents;
+		this.rents = rents;
+
 	}
 
-	// RENT TABLES
-
-	public int[] getAllRents() {
-		return allRents;
-	}
-
-	public void setAllRents(int[] allRents) {
-		this.allRents = allRents;
-	}
-
-	public int getNbrHouses() {
-		return nbrHouses;
-	}
-
-	public void setNbrHouses(int nbrHouses) {
-		this.nbrHouses = nbrHouses;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public Player getOwner() {
-		return owner;
-	}
-
-	public void setOwner(Player owner) {
-		this.owner = owner;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getGroup() {
+	public Group getGroup() {
 		return group;
 	}
 
-	public void setGroup(int group) {
+	public void setGroup(Group group) {
 		this.group = group;
 	}
 
-	public int getPosition() {
-		return position;
+	public void endShowActions(Game game) {
+		// TODO Auto-generated method stub
+
+		if (game.getCurrentPlayer().canBuy(this) && game.isAvailable(this))
+			System.out.print("1. Acheter(" + this.price + ")   2./Passer");
+
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
-	}
-
-	// Prix réel du loyer
-	// A modifier ?
-	public int creditsToPay(Land land) {
-		int realRent = 1337;
-
-		switch (land.getNbrHouses()) {
-		case 0:
-			realRent = land.allRents[0];
-			break;
-		case 1:
-			realRent = land.allRents[1];
-			break;
-		case 2:
-			realRent = land.allRents[2];
-			break;
-		case 3:
-			realRent = land.allRents[3];
-			break;
-		case 4:
-			realRent = land.allRents[4];
-			break;
-		case 5:
-			realRent = land.allRents[5];
-			break;
-			default:
-			realRent = 420;
+	public boolean endExecuteAction(Game game) {
+		
+		//get land owner
+		Player landOwner = game.getLandOwner(this);
+		
+		//apply rent or not
+		if(landOwner != null && landOwner != game.getCurrentPlayer()) {
+			
+			landOwner.takeRent(game.getCurrentPlayer(), this);
+			return true;
+			
 		}
-		return realRent;
-	}
+			
+		//Si le joueur ne peut pas acheter, on passe le tour
+		if (!game.getCurrentPlayer().canBuy(this))
+			return true;
+		
+		int number = Player.getInput();
 
-	public static Land findFromBoardPosition(ArrayList<Land> board, int position) {
-		return board.stream().filter(land -> land.getPosition() == position).findFirst().orElse(null);
+		if (number == 1) {
+			game.getCurrentPlayer().buy(this);
+			return true; // Acheter revient a passer car plus d'actions possibles
+		}
+
+		if (number == 2) {
+			return true; // find du tour ( 2./ Passer )
+		}
+
+		return false;
+
+	}
+	
+	public int getRent() {
+		
+		return rents[houses];
 	}
 
 }
