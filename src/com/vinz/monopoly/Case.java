@@ -18,7 +18,7 @@ public class Case implements ICase {
 
 	public void startShowActions() {
 		// TODO Auto-generated method stub
-		System.out.print("1. Lancer les dés / 2. Voir la map / 3. Gérer les propriétés");
+		System.out.print("1. Lancer les dÃ©s / 2. Voir la map / 3. GÃ©rer les propriÃ©tÃ©s");
 		
 		
 	}

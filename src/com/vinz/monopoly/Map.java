@@ -9,8 +9,8 @@ public class Map {
 	Group group2 = new Group("Hoth", 5000);
 	Group group3 = new Group("Tatooine", 10000);
 	Group group4 = new Group("Yavin IV", 10000);
-	Group group5 = new Group("Cité des nuages", 15000);
-	Group group6 = new Group("Étoile noire", 15000);
+	Group group5 = new Group("CitÃ© des nuages", 15000);
+	Group group6 = new Group("Ã‰toile noire", 15000);
 	Group group7 = new Group("Endor", 20000);
 	Group group8 = new Group("Coruscant", 20000);
 	
@@ -61,8 +61,8 @@ public class Map {
 		cases[5] = new Station("Tie-Fighter");
 		cases[6] = new Land("Base Echo", group2, 10000, landB1);
 		// cases[7] = new Special("Empire", SpecialsType.Empire);
-		cases[8] = new Land("Plaines glacées", group2, 10000, landB1);
-		cases[9] = new Land("Crête Nord", group2, 12000, landB2);
+		cases[8] = new Land("Plaines glacÃ©es", group2, 10000, landB1);
+		cases[9] = new Land("Crï¿½te Nord", group2, 12000, landB2);
 		cases[10] = new Special("Prison/Simple visite", SpecialsType.Jail);
 		cases[11] = new Land("Ferme de Lars", group3, 14000, landC1);
 		cases[12] = new Land("Mosesli", group3, 14000, landC1);
@@ -72,27 +72,27 @@ public class Map {
 		cases[16] = new Land("Salle de combat", group4, 18000, landC1);
 		// Rebels
 		cases[18] = new Land("Temple de Massassi", group4, 18000, landC1);
-		cases[19] = new Land("Salle du Trône", group4, 20000, landC2);
+		cases[19] = new Land("Salle du TrÃ´ne", group4, 20000, landC2);
 		// PArc Gratuit
 		cases[21] = new Land("Plateforme d'atterissage", group5, 20000, landD1);
 		// Empire
 		cases[23] = new Land("Chambre de Hughzer", group5, 20000, landD1);
-		cases[24] = new Land("Salle de contrôle du réacteur", group5, 22000, landD2);
+		cases[24] = new Land("Salle de contrÃ´le du rÃ©acteur", group5, 22000, landD2);
 		cases[25] = new Station("X-Wing Fighter");
 		cases[26] = new Land("Plateforme d'atterissage", group6, 26000, landE1);
-		cases[27] = new Land("Salle du Trône", group6, 26000, landE1);
+		cases[27] = new Land("Salle du TrÃ´ne", group6, 26000, landE1);
 		// Ferme aquatique
 		cases[29] = new Land("Noyau central", group6, 28000, landE2);
 		cases[30] = new Special("Go to Jail", SpecialsType.GoToJail);
-		cases[31] = new Land("Forêt d'Endor", group7, 30000, landF1);
-		cases[32] = new Land("Générateur de bouclier de protection", group7, 30000, landF1);
+		cases[31] = new Land("ForÃªt d'Endor", group7, 30000, landF1);
+		cases[32] = new Land("GÃ©nÃ©rateur de bouclier de protection", group7, 30000, landF1);
 		// Rebels
 		cases[34] = new Land("Village des Ewoks", group7, 32000, landF2);
 		cases[5] = new Station("Destroyer Imperial");
 		//cases[36] = new Empire("Empire", SpecialsType.Start);
-		cases[37] = new Land("Monument carré", group8, 35000, landG1);
+		cases[37] = new Land("Monument carrÃ©", group8, 35000, landG1);
 		// Prime
-		cases[39] = new Land("Palais Impérial", group8, 40000, landG2);
+		cases[39] = new Land("Palais ImpÃ©rial", group8, 40000, landG2);
 
 	}
 	

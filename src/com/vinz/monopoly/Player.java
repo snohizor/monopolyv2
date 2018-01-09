@@ -51,7 +51,7 @@ public class Player {
 
 		if (this.position > Main.nbrTotalCases) {
 			this.position = this.position - Main.nbrTotalCases;
-			System.out.println("Vous passez par la case départ et gagnez 20 000!");
+			System.out.println("Vous passez par la case dÃ©part et gagnez 20 000!");
 			this.addCredit(20000);
 		}
 		
@@ -69,7 +69,7 @@ public class Player {
 
 	public void manage() {
 
-		System.out.println("1. Comparer / 2. Ajouter des maisons / 3. Retirer des maisons / 4. Échanges / 0. Retour");
+		System.out.println("1. Comparer / 2. Ajouter des maisons / 3. Retirer des maisons / 4. Ã‰changes / 0. Retour");
 
 		int x = Player.getInput();
 
@@ -89,7 +89,7 @@ public class Player {
 
 	public void buyLand(Land land) {
 
-		System.out.println(this.name + " a acheté " + land.name + " pour " + land.price + " $.");
+		System.out.println(this.name + " a achetÃ© " + land.name + " pour " + land.price + " $.");
 
 		if (land.price <= this.credit) {
 
@@ -100,7 +100,7 @@ public class Player {
 
 		} else {
 
-			System.out.print("Vous ne pouvez pas vous payer cette propriété.");
+			System.out.print("Vous ne pouvez pas vous payer cette propriÃ©tÃ©.");
 
 		}
 
@@ -108,7 +108,7 @@ public class Player {
 	
 	public void buyStation(Station station) {
 
-		System.out.println(this.name + " a acheté " + station.name + " pour " + station.price + " $.");
+		System.out.println(this.name + " a achetÃ© " + station.name + " pour " + station.price + " $.");
 
 		if (station.price <= this.credit) {
 
@@ -119,7 +119,7 @@ public class Player {
 
 		} else {
 
-			System.out.print("Vous ne pouvez pas vous payer cette propriété.");
+			System.out.print("Vous ne pouvez pas vous payer cette propriÃ©tÃ©.");
 
 		}
 
@@ -132,7 +132,7 @@ public class Player {
 
 	public void takeRent(Player currentPlayer, Land land) {
 		
-		System.out.println(currentPlayer.name + " est tombé chez " + this.name + " et paie la somme de " + land.getRent() + " $.");
+		System.out.println(currentPlayer.name + " est tombÃ© chez " + this.name + " et paie la somme de " + land.getRent() + " $.");
 		
 		currentPlayer.credit = currentPlayer.credit - land.getRent();
 		this.credit = this.credit + land.getRent();

@@ -39,7 +39,7 @@ public class Game {
 
 				}
 
-				// Les dès ont été lancés
+				// Les dï¿½s ont ï¿½tï¿½ lancï¿½s
 				map.cases[player.position].showInformations(this);
 
 				isTurnOver = false;
@@ -69,7 +69,7 @@ public class Game {
 		else
 			currentPlayerIndex++;
 
-		System.out.println("Début du tour de " + this.getCurrentPlayer().name + ".");
+		System.out.println("DÃ©but du tour de " + this.getCurrentPlayer().name + ".");
 		
 
 	}
