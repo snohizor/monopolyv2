@@ -10,10 +10,16 @@ public class Case implements ICase {
 		
 	}
 	
-	public void showInformations(Game game) {
+	public void showStartInformations(Game game) {
 		
-		System.out.println(game.getCurrentPlayer().name + " atterit sur la case " + name + "(" +  game.getCurrentPlayer().position + ")");	
+		System.out.println(game.getCurrentPlayer().name + " est sur la case " + name + "(" +  game.getCurrentPlayer().position + ")");
 	
+	}
+
+	public void showInformations(Game game) {
+
+		System.out.println(game.getCurrentPlayer().name + " atterit sur la case " + name + "(" +  game.getCurrentPlayer().position + ")");
+
 	}
 
 	public void startShowActions() {
@@ -44,6 +50,7 @@ public class Case implements ICase {
 
 	public void endShowActions(Game game) {
 		// TODO Auto-generated method stub
+		System.out.println("endShowActions()");
 		
 	}
 

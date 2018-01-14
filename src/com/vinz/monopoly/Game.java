@@ -1,7 +1,8 @@
 package com.vinz.monopoly;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import static com.vinz.monopoly.Dices.isDoubleDices;
 
 public class Game {
 
@@ -28,35 +29,65 @@ public class Game {
 
 			for (Player player : players) {
 
-				map.cases[player.position].showInformations(this);
+				currentPlayerPlay(player);
 
-				boolean isTurnOver = false;
-
-				while (!isTurnOver) {
-
-					map.cases[player.position].startShowActions();
-					isTurnOver = map.cases[player.position].startExecuteAction(player.getInput(), this);
-
-				}
-
-				// Les d�s ont �t� lanc�s
-				map.cases[player.position].showInformations(this);
-
-				isTurnOver = false;
-				
-				while (!isTurnOver) {
-
-					map.cases[player.position].endShowActions(this);
-					isTurnOver = map.cases[player.position].endExecuteAction(this);
-
-				}
-
-				passTurn();
 
 			}
 
 		}
 
+	}
+
+	//Tour d'un joueur
+	private void currentPlayerPlay(Player player){
+
+		boolean isTurnOver = false;
+
+
+		//On montre les informations
+		map.cases[player.position].showStartInformations(this);
+
+		onePlayerRound(player, isTurnOver);
+
+		passTurn();
+
+
+
+	}
+
+	private void onePlayerRound(Player player, boolean isTurnOver) {
+
+		int throwsIndex = 0;
+
+		//Tant que le joueur n'a pas fini son tour
+		while (!isTurnOver) {
+
+			//On lui propose des actions
+            map.cases[player.position].startShowActions();
+
+            //Prend son input puis on execute son action
+            isTurnOver = map.cases[player.position].startExecuteAction(player.getInput(), this);
+
+            if(isDoubleDices() && throwsIndex < 2)
+            	isTurnOver = false;
+
+			if(isDoubleDices() && throwsIndex > 2)
+				System.out.println("VOUS ALLEZ EN PRISON POUR EXCES DE VITESSE");
+				//PRISON
+
+        }
+
+		// Les dés ont été lancés
+		map.cases[player.position].showInformations(this);
+
+		isTurnOver = false;
+
+		while (!isTurnOver) {
+
+            map.cases[player.position].endShowActions(this);
+            isTurnOver = map.cases[player.position].endExecuteAction(this);
+            //Control double dés
+        }
 	}
 
 	public void passTurn() {

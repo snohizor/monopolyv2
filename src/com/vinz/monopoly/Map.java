@@ -55,14 +55,14 @@ public class Map {
 
 		cases[0] = new Special("Start", SpecialsType.Start);
 		cases[1] = new Land("Marais de Dagobah", group1, 6000, landA1);
-		// cases[2] = new Special("Rebels", SpecialsType.Rebels);
+		cases[2] = new CardDraw("Rebels", Main.Faction.Rebels);
 		cases[3] = new Land("Hutte de Yoda", group1, 6000, landA2);
 		cases[4] = new Special("Taxe", SpecialsType.Tax);
 		cases[5] = new Station("Tie-Fighter");
 		cases[6] = new Land("Base Echo", group2, 10000, landB1);
-		// cases[7] = new Special("Empire", SpecialsType.Empire);
+		cases[7] = new CardDraw("Empire", Main.Faction.Empire);
 		cases[8] = new Land("Plaines glacées", group2, 10000, landB1);
-		cases[9] = new Land("Cr�te Nord", group2, 12000, landB2);
+		cases[9] = new Land("Crête Nord", group2, 12000, landB2);
 		cases[10] = new Special("Prison/Simple visite", SpecialsType.Jail);
 		cases[11] = new Land("Ferme de Lars", group3, 14000, landC1);
 		cases[12] = new Land("Mosesli", group3, 14000, landC1);
@@ -70,12 +70,12 @@ public class Map {
 		cases[14] = new Land("Palais de Jabba le Forestier", group3, 16000, landC1);
 		cases[15] = new Station("Faucon Millenium");
 		cases[16] = new Land("Salle de combat", group4, 18000, landC1);
-		// Rebels
+		cases[17] = new CardDraw("Rebels", Main.Faction.Rebels);
 		cases[18] = new Land("Temple de Massassi", group4, 18000, landC1);
 		cases[19] = new Land("Salle du Trône", group4, 20000, landC2);
 		// PArc Gratuit
 		cases[21] = new Land("Plateforme d'atterissage", group5, 20000, landD1);
-		// Empire
+		cases[22] = new CardDraw("Empire", Main.Faction.Empire);
 		cases[23] = new Land("Chambre de Hughzer", group5, 20000, landD1);
 		cases[24] = new Land("Salle de contrôle du réacteur", group5, 22000, landD2);
 		cases[25] = new Station("X-Wing Fighter");
@@ -86,10 +86,10 @@ public class Map {
 		cases[30] = new Special("Go to Jail", SpecialsType.GoToJail);
 		cases[31] = new Land("Forêt d'Endor", group7, 30000, landF1);
 		cases[32] = new Land("Générateur de bouclier de protection", group7, 30000, landF1);
-		// Rebels
+		cases[33] = new CardDraw("Rebels", Main.Faction.Rebels);
 		cases[34] = new Land("Village des Ewoks", group7, 32000, landF2);
 		cases[5] = new Station("Destroyer Imperial");
-		//cases[36] = new Empire("Empire", SpecialsType.Start);
+		cases[2] = new CardDraw("Empire", Main.Faction.Empire);
 		cases[37] = new Land("Monument carré", group8, 35000, landG1);
 		// Prime
 		cases[39] = new Land("Palais Impérial", group8, 40000, landG2);

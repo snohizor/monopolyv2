@@ -30,7 +30,7 @@ public class Land extends Case implements ICase {
 		// TODO Auto-generated method stub
 
 		if (game.getCurrentPlayer().canBuy(this) && game.isAvailable(this))
-			System.out.print("1. Acheter(" + this.price + ")   2./Passer");
+			System.out.print("1. Acheter(" + this.price + ") / 2. Passer");
 
 	}
 

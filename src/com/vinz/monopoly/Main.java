@@ -14,7 +14,13 @@ public class Main {
 		  GoToJail,
 		  Tax,
 		  Prime;
-		} 
+		}
+
+		
+	public enum Faction {
+		Empire,
+		Rebels
+	}
 
 	
 
