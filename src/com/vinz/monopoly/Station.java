@@ -84,7 +84,7 @@ public class Station extends Case implements ICase {
 
 	public int getRent(Player player) {
 
-		return rents[player.getStations().size()];
+		return rents[player.getStations().size()-1];
 	}
 	
 }

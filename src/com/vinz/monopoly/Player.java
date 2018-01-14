@@ -4,28 +4,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
-	public String name;
-	private int id;
-	public int credit;
-	public int position;
-	public ArrayList<Land> ownedLands;
-	public ArrayList<Station> ownedStations;
+    public String name;
+    private int id;
+    public int credit;
+    public int position;
+    public ArrayList<Land> ownedLands;
+    public ArrayList<Station> ownedStations;
 
-	public Player(String name, int id, int credit, int position) {
+    public Player(String name, int id, int credit, int position) {
 
-		super();
+        super();
 
-		this.name = name;
-		this.id = id;
-		this.credit = credit;
-		this.position = position;
+        this.name = name;
+        this.id = id;
+        this.credit = credit;
+        this.position = position;
 
         this.ownedLands = new ArrayList<Land>();
         this.ownedStations = new ArrayList<Station>();
 
-	}
+    }
 
-	////////////////////////////////////
+    ////////////////////////////////////
     //////////////MOVEMENT//////////////
     ////////////////////////////////////
 
@@ -33,7 +33,7 @@ public class Player {
 
         this.position = this.position + distance;
 
-        if(this.position == 40){
+        if (this.position == 40) {
             this.position = 0;
         }
         if (this.position > Main.nbrTotalCases) {
@@ -42,7 +42,7 @@ public class Player {
             this.addCredit(20000);
         }
 
-	}
+    }
 
     public void throwDices() {
 
@@ -68,8 +68,7 @@ public class Player {
         if (sc.hasNextInt()) {
             System.out.println("");
             return sc.nextInt();
-        }
-        else
+        } else
             return getInput();
 
     }
@@ -82,41 +81,56 @@ public class Player {
 
         if (x == 0)
             return;
-        else if(x == 1){
+        else if (x == 1) {
             this.seeProperties();
             manage();
+        } else if (x == 2) {
+            this.addHouses();
         }
     }
 
-    public void seeProperties(){
+    public void seeProperties() {
 
-	    if (ownedLands.size() != 0){
+        if (ownedLands.size() != 0) {
 
             System.out.println("Terrains de " + this.name + " :");
-            for(Land testland : ownedLands ){
+            for (Land testland : ownedLands) {
                 System.out.println("- " + testland.getName());
             }
             System.out.println("");
-        }
-        else if(ownedStations.size() != 0){
+        } else if (ownedStations.size() != 0) {
             System.out.println("Gares de " + this.name + " :");
-            for(Land testland : ownedLands ){
-                System.out.println("- " + testland.getName());
+            for (Station teststation : ownedStations) {
+                System.out.println("- " + teststation.getName());
             }
             System.out.println("");
-        }
-        else {
+        } else {
             System.out.println("Vous êtes un SDF.");
         }
 
     }
 
+    public boolean canAddHouses(Group group) {
+
+
+        return group.isFullGroupOwner(this);
+
+    }
+
+    public void addHouses() {
+
+        //On va chercher les groupes complets
+        //On affiche les terrains de ces groupes
+
+
+
+    }
+
     public void buy(Case currentCase) {
         if (currentCase.getClass() == Land.class) {
-            this.buyLand((Land)currentCase);
-        }
-        else if (currentCase.getClass() == Station.class) {
-            this.buyStation((Station)currentCase);
+            this.buyLand((Land) currentCase);
+        } else if (currentCase.getClass() == Station.class) {
+            this.buyStation((Station) currentCase);
         }
     }
 
@@ -158,11 +172,11 @@ public class Player {
 
     }
 
-    public boolean canBuy(Land testcase){
+    public boolean canBuy(Land testcase) {
         return (testcase.price <= this.credit);
     }
 
-    public boolean canBuy(Station station){
+    public boolean canBuy(Station station) {
         return (station.price <= this.credit);
 
     }
@@ -205,7 +219,7 @@ public class Player {
 
     }
 
-    public ArrayList<Station> getStations(){
-	    return this.ownedStations;
+    public ArrayList<Station> getStations() {
+        return this.ownedStations;
     }
 }

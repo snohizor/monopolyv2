@@ -6,7 +6,8 @@ import java.util.Arrays;
 public class Main {
 	
 	public static int nbrTotalCases = 40;
-	
+	public static ArrayList<Game> games = new ArrayList<>();
+
 	public enum SpecialsType {
 		  Start,
 		  Jail,
@@ -44,10 +45,22 @@ public class Main {
 		player2.displayMoneyPlayer();
 		
 		Game game = new Game(players);
+
+		games.add(game);
 		
 
 	}
-	
+
+
+	public static Game getCurrentGame(Player player){
+
+		for(Game testgame : games){
+			if(testgame.players.contains(player))
+				return testgame;
+		}
+		return null;
+
+	}
 	
 	
 	
