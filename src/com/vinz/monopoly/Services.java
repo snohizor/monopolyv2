@@ -1,5 +1,6 @@
 package com.vinz.monopoly;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import com.vinz.monopoly.Main.Faction;
 
 
@@ -16,13 +17,11 @@ public class Services extends Case implements ICase{
         System.out.println("ON A PAS FAIT LA CASE SERVICE LOL");
     }
 
-    public boolean startExecuteAction(int input, Game game){
+    public Action[] getEndActions(Game game){
 
-        return true;
+        System.out.println("Pas encore implémenté");
 
-    }
-
-    public void endShowActions(Game game){
+        return new Action[]{};
 
     }
 

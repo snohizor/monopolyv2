@@ -14,19 +14,13 @@ public class Special extends Case implements ICase{
 
 	}
 
-	public void startShowActions() {
+	public Action[] getStartActions() {
 
-		super.startShowActions();
-
-		if (type == SpecialsType.Start) {
-
-			return;
-
-		}
+		return super.getStartActions();
 
 	}
 
-	public void endShowActions(Game game) {
+	public Action[] getEndActions(Game game) {
 		// TODO Auto-generated method stub
 
 		if (type == SpecialsType.Start) {
@@ -35,41 +29,42 @@ public class Special extends Case implements ICase{
 			game.getCurrentPlayer().addCredit(40000);
 
 		}
-		
+
 		if (type == SpecialsType.Jail) {
 
-			System.out.println("Simple visite. ");
+			System.out.println("Simple visite. Pas encore implémenté");
+			return new Action[]{};
 
 		}
 		
 		if (type == SpecialsType.Park) {
 
-			System.out.println("Parc gratuit !!! ");
+			System.out.println("Parc gratuit !!! Pas encore implémenté");
+			return new Action[]{};
 
 		}
 		
 		if (type == SpecialsType.GoToJail) {
 
-			System.out.println("tmp : Ca ira pour cette fois. Circulez. ");
+			System.out.println("tmp : Ca ira pour cette fois. Circulez. Pas encore implémenté");
+			return new Action[]{};
 
 		}
 		
 		if (type == SpecialsType.Tax) {
 
 			System.out.println("TAXES !");
-			System.out.println(game.getCurrentPlayer().name + " donne 20000 $ aux imp�ts.");
+			System.out.println(game.getCurrentPlayer().name + " donne 20000 $ aux imp�ts.");
 			
 			game.payTax(game.getCurrentPlayer(), 20000);
 
+			return new Action[]{};
+
 		}
 
-	}
-
-	public boolean endExecuteAction(int number, Game game) {
-
-		// Pas d'actions a la fin du tour sur une case speciale
-		return true;
+		return new Action[]{};
 
 	}
+
 
 }

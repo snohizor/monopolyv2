@@ -16,7 +16,7 @@ public class Main {
 		  Prime;
 		}
 
-		
+
 	public enum Faction {
 		Empire,
 		Rebels
@@ -30,11 +30,13 @@ public class Main {
 
 		Player player1 = new Player("Kévin", 1, 150000, 0);
 		Player player2 = new Player("Hugo", 2, 150000, 0);
+		Player player3 = new Player("Vinz", 3, 150000, 0);
 		
 		players.add(player1);
 		players.add(player2);
-		
-				
+		players.add(player3);
+
+
 		System.out.println("START");
 			
 	

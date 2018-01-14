@@ -20,7 +20,8 @@ public class Player {
 		this.credit = credit;
 		this.position = position;
 
-		this.ownedLands = new ArrayList<Land>();
+        this.ownedLands = new ArrayList<Land>();
+        this.ownedStations = new ArrayList<Station>();
 
 	}
 
@@ -32,11 +33,15 @@ public class Player {
 
         this.position = this.position + distance;
 
+        if(this.position == 40){
+            this.position = 0;
+        }
         if (this.position > Main.nbrTotalCases) {
             this.position = this.position - Main.nbrTotalCases;
             System.out.println("Vous passez par la case départ et gagnez 20 000!");
             this.addCredit(20000);
         }
+
 	}
 
     public void throwDices() {
@@ -59,6 +64,7 @@ public class Player {
 
         Scanner sc = new Scanner(System.in);
 
+
         if (sc.hasNextInt()) {
             System.out.println("");
             return sc.nextInt();
@@ -70,12 +76,38 @@ public class Player {
 
     public void manage() {
 
-        System.out.println("1. Comparer / 2. Ajouter des maisons / 3. Retirer des maisons / 4. Échanges / 0. Retour");
+        System.out.println("1. Voir ses propriétés / 2. Ajouter des maisons / 3. Retirer des maisons / 4. Échanges / 0. Retour");
 
         int x = Player.getInput();
 
         if (x == 0)
             return;
+        else if(x == 1){
+            this.seeProperties();
+            manage();
+        }
+    }
+
+    public void seeProperties(){
+
+	    if (ownedLands.size() != 0){
+
+            System.out.println("Terrains de " + this.name + " :");
+            for(Land testland : ownedLands ){
+                System.out.println("- " + testland.getName());
+            }
+            System.out.println("");
+        }
+        else if(ownedStations.size() != 0){
+            System.out.println("Gares de " + this.name + " :");
+            for(Land testland : ownedLands ){
+                System.out.println("- " + testland.getName());
+            }
+            System.out.println("");
+        }
+        else {
+            System.out.println("Vous êtes un SDF.");
+        }
 
     }
 
@@ -126,9 +158,13 @@ public class Player {
 
     }
 
-    public boolean canBuy(Land land) {
-        // TODO Auto-generated method stub
-        return (land.price <= this.credit);
+    public boolean canBuy(Land testcase){
+        return (testcase.price <= this.credit);
+    }
+
+    public boolean canBuy(Station station){
+        return (station.price <= this.credit);
+
     }
 
     public void takeRent(Player currentPlayer, Land land) {
@@ -137,6 +173,17 @@ public class Player {
 
         currentPlayer.credit = currentPlayer.credit - land.getRent();
         this.credit = this.credit + land.getRent();
+
+        System.out.println(this.name + " : " + this.credit + " $.");
+        System.out.println(currentPlayer.name + " : " + currentPlayer.credit + " $.");
+    }
+
+    public void takeRent(Player currentPlayer, Station station) {
+
+        System.out.println(currentPlayer.name + " est tombé chez " + this.name + " et paie la somme de " + station.getRent(this) + " $.");
+
+        currentPlayer.credit = currentPlayer.credit - station.getRent(this);
+        this.credit = this.credit + station.getRent(this);
 
         System.out.println(this.name + " : " + this.credit + " $.");
         System.out.println(currentPlayer.name + " : " + currentPlayer.credit + " $.");
@@ -156,5 +203,9 @@ public class Player {
 
         System.out.println(name + " a " + credit + " credits");
 
+    }
+
+    public ArrayList<Station> getStations(){
+	    return this.ownedStations;
     }
 }

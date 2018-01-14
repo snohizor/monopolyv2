@@ -26,15 +26,48 @@ public class Land extends Case implements ICase {
 		this.group = group;
 	}
 
-	public void endShowActions(Game game) {
+	public Action[] getEndActions(Game game) {
 		// TODO Auto-generated method stub
 
-		if (game.getCurrentPlayer().canBuy(this) && game.isAvailable(this))
-			System.out.print("1. Acheter(" + this.price + ") / 2. Passer");
+		//get land owner
+		Player landOwner = game.getLandOwner(this);
 
+		//Si le proprietaire est chez lui
+		if(landOwner == game.getCurrentPlayer()) {
+
+			return new Action[]{};
+		}
+
+		//Sinon, si il est chez un autre joueur
+		if(landOwner != null){
+			landOwner.takeRent(game.getCurrentPlayer(), this);
+		}
+
+		if (game.getCurrentPlayer().canBuy(this) && game.isAvailable(this)) {
+
+			System.out.println("Prix du terrain :"+this.price);
+
+			System.out.println("Argent de "+ game.getCurrentPlayer().name + " : " + game.getCurrentPlayer().credit);
+
+			return new Action[]{
+					new Action("Acheter", false),
+					new Action("Passer", true)
+			};
+
+		} else {
+
+			System.out.println("Vous ne pouvez pas acheter car :");
+
+			if(!game.getCurrentPlayer().canBuy(this))
+				System.out.println("Vous n'avez pas assez d'argent.");
+
+		}
+
+
+			return new Action[]{};
 	}
 
-	public boolean endExecuteAction(Game game) {
+	public boolean endExecuteAction(int input, Game game) {
 		
 		//get land owner
 		Player landOwner = game.getLandOwner(this);
@@ -50,16 +83,14 @@ public class Land extends Case implements ICase {
 		//Si le joueur ne peut pas acheter, on passe le tour
 		if (!game.getCurrentPlayer().canBuy(this))
 			return true;
-		
-		int number = Player.getInput();
 
-		if (number == 1) {
+		if (input == 1) {
 			game.getCurrentPlayer().buy(this);
 			return true; // Acheter revient a passer car plus d'actions possibles
 		}
 
-		if (number == 2) {
-			return true; // find du tour ( 2./ Passer )
+		if (input == 0) {
+			return true; // fin du tour ( 0./ Passer )
 		}
 
 		return false;

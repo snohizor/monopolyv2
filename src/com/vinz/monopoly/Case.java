@@ -9,7 +9,11 @@ public class Case implements ICase {
 		this.name = name;
 		
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
 	public void showStartInformations(Game game) {
 		
 		System.out.println(game.getCurrentPlayer().name + " est sur la case " + name + "(" +  game.getCurrentPlayer().position + ")");
@@ -22,12 +26,17 @@ public class Case implements ICase {
 
 	}
 
-	public void startShowActions() {
+	public Action[] getStartActions() {
 		// TODO Auto-generated method stub
-		System.out.print("1. Lancer les dés / 2. Voir la map / 3. Gérer les propriétés");
+		return new Action[]{
+				new Action("Lancer les dès", true),
+				new Action("Voir la map" , false),
+				new Action("Gérer les propriétés",false)
+		};
 		
 		
 	}
+
 
 	public boolean startExecuteAction(int input, Game game) {
 		// TODO Auto-generated method stub
@@ -48,13 +57,14 @@ public class Case implements ICase {
 		return false;
 	}
 
-	public void endShowActions(Game game) {
+	//Renvoie true si le
+	public Action[] getEndActions(Game game) {
 		// TODO Auto-generated method stub
-		System.out.println("endShowActions()");
+		return new Action[]{};
 		
 	}
 
-	public boolean endExecuteAction(Game game) {
+	public boolean endExecuteAction(int input, Game game) {
 		
 		//Fin du tour
 		return true;

@@ -66,14 +66,14 @@ public class Map {
 		cases[10] = new Special("Prison/Simple visite", SpecialsType.Jail);
 		cases[11] = new Land("Ferme de Lars", group3, 14000, landC1);
 		cases[12] = new Land("Mosesli", group3, 14000, landC1);
-		// Reacteur Central
+		cases[13] = new Services("Reacteur central");
 		cases[14] = new Land("Palais de Jabba le Forestier", group3, 16000, landC1);
 		cases[15] = new Station("Faucon Millenium");
 		cases[16] = new Land("Salle de combat", group4, 18000, landC1);
 		cases[17] = new CardDraw("Rebels", Main.Faction.Rebels);
 		cases[18] = new Land("Temple de Massassi", group4, 18000, landC1);
 		cases[19] = new Land("Salle du Trône", group4, 20000, landC2);
-		// PArc Gratuit
+		cases[20] = new Special("Parc gratuit", SpecialsType.Park);
 		cases[21] = new Land("Plateforme d'atterissage", group5, 20000, landD1);
 		cases[22] = new CardDraw("Empire", Main.Faction.Empire);
 		cases[23] = new Land("Chambre de Hughzer", group5, 20000, landD1);
@@ -81,17 +81,17 @@ public class Map {
 		cases[25] = new Station("X-Wing Fighter");
 		cases[26] = new Land("Plateforme d'atterissage", group6, 26000, landE1);
 		cases[27] = new Land("Salle du Trône", group6, 26000, landE1);
-		// Ferme aquatique
+		cases[28] = new Services("Ferme aquatique");
 		cases[29] = new Land("Noyau central", group6, 28000, landE2);
 		cases[30] = new Special("Go to Jail", SpecialsType.GoToJail);
 		cases[31] = new Land("Forêt d'Endor", group7, 30000, landF1);
 		cases[32] = new Land("Générateur de bouclier de protection", group7, 30000, landF1);
 		cases[33] = new CardDraw("Rebels", Main.Faction.Rebels);
 		cases[34] = new Land("Village des Ewoks", group7, 32000, landF2);
-		cases[5] = new Station("Destroyer Imperial");
-		cases[2] = new CardDraw("Empire", Main.Faction.Empire);
+		cases[35] = new Station("Destroyer Imperial");
+		cases[36] = new CardDraw("Empire", Main.Faction.Empire);
 		cases[37] = new Land("Monument carré", group8, 35000, landG1);
-		// Prime
+		cases[38] = new Special("Prime", SpecialsType.Prime);
 		cases[39] = new Land("Palais Impérial", group8, 40000, landG2);
 
 	}

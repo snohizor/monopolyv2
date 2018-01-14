@@ -2,13 +2,13 @@ package com.vinz.monopoly;
 
 public interface ICase {
 	
-	void startShowActions();
+	Action[] getStartActions();
 
 	//RENVOIE VRAI SI LE TOUR EST FINI APRES L'ACTION
 	boolean startExecuteAction(int input, Game game);
 	
-	void endShowActions(Game game);
+	Action[] getEndActions(Game game);
 	
-	boolean endExecuteAction(Game game);
+	boolean endExecuteAction(int input, Game game);
 
 }

@@ -19,19 +19,21 @@ public class Dices {
 
 	public static int[] rollDices() {
 		
-		dice1 = (int) (Math.random() * 6) + 1;
-		dice2 = (int) (Math.random() * 6) + 1;
+		dice1 = 4;//(int) (Math.random() * 6) + 1;
+		dice2 = 1;//(int) (Math.random() * 6) + 1;
 		
 		int[] results = new int[2];
-		results = new int[]{dice1, dice2};
-		//results = new int[]{3,3};
+		//results = new int[]{dice1, dice2};
+		results = new int[]{4,1};
 
 		return results;
 		
 	}
 
 	public static boolean isDoubleDices(){
-
+		if(70000 == dice2){
+			System.out.println("\nDOUBLE !");
+		}
 		return (dice1 == dice2);
 
 	}
